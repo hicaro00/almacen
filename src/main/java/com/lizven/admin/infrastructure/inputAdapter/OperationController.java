@@ -8,11 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/serie")
+@RequestMapping("/operationtype")
 @Slf4j
 public class OperationController {
 
@@ -21,7 +22,7 @@ public class OperationController {
     OperationType operationType;
 
 
-    @PostMapping("/guardarOperacion")
+    @PostMapping("/guardaroperaciontipe")
     @ResponseBody
     public ResponseEntity<Operaciones> saveOpertaionType ( Operaciones operaciones){
 
@@ -30,10 +31,9 @@ public class OperationController {
     }
     @GetMapping("/getoperationtype")
     @ResponseBody
-    public ResponseEntity<Optional<Operaciones>> getOperationType (Long id){
+    public List<Operaciones> getOperationType (){
+        return operationType.getAllOperations();
 
-        Optional<Operaciones> getOpertaionType = operationType.getByIdOperationType(id);
-        return ResponseEntity.status(HttpStatus.OK).body(getOpertaionType);
     }
 
 }

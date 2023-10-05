@@ -22,12 +22,12 @@ public class OperationServiceImpl implements OperationType {
 
     @Override
     public Optional<Operaciones> getByIdOperationType(Long id) {
-        return operationRepository.findById(id);
+
+        return Optional.ofNullable(operationRepository.findById(id).orElse(null));
     }
 
     @Override
     public List<Operaciones> getAllOperations() {
-    //    return Collections.singletonList(operationRepository.findAll().get());
-        return null;
+        return operationRepository.findAll();
     }
 }
